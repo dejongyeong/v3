@@ -44,10 +44,9 @@ const eslintConfig = [
       ...jestDom.configs["flat/recommended"],
     },
   ),
-
   {
     ignores: [
-      "next.config.js",
+      "next.config.ts",
       "node_modules",
       ".next",
       "out",
