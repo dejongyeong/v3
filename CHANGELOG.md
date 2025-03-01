@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/dejongyeong/v3/compare/v1.0.0...v1.1.0) (2025-03-01)
+
+
+### Features
+
+* add bundler analyzer to investigate large dependencies ([d3e0a07](https://github.com/dejongyeong/v3/commit/d3e0a0758d8d602501e722ff20aa8d0a1a4b2575))
+
 # 1.0.0 (2025-03-01)
 
 
