@@ -11,7 +11,7 @@ jobs:
       matrix:
         node-version: [23.x]
 
-    name: create a new release
+    name: new release
     runs-on: ubuntu-latest
 
     permissions:
@@ -24,14 +24,14 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: use node.js ${{ matrix.node-version }}
+      - name: Use node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
-      - name: install dependencies
+      - name: Install dependencies
         run: HUSKY=0 npm ci
-      - name: release
+      - name: Release
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
