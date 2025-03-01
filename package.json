@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "build:analyze": "cross-env ANALYZE=true npm run build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
@@ -16,6 +17,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^15.2.0",
     "@t3-oss/env-nextjs": "^0.12.0",
     "next": "15.2.0",
     "react": "^19.0.0",
