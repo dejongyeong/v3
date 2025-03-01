@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# run tests before pushing
+cd "$(dirname "$0")/.." && npm run test

@@ -10,7 +10,8 @@
     "format": "prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
     "check-types": "tsc --noEmit --pretty",
     "prepare": "husky",
-    "commit": "cz"
+    "commit": "cz",
+    "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
     "next": "15.2.0",
@@ -25,9 +26,14 @@
     "@commitlint/prompt": "^19.7.1",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/expect": "^3.0.7",
     "commitizen": "^4.3.1",
     "eslint": "^9.21.0",
     "eslint-config-next": "15.2.0",
@@ -44,7 +50,10 @@
     "prettier": "3.5.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.0.9",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.0.7",
+    "vitest-fail-on-console": "^0.7.1"
   },
   "config": {
     "commitizen": {
