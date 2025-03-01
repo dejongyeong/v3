@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write '**/*.{json,yaml}' --write --ignore-path .gitignore"
+    "format": "prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
+    "check-types": "tsc --noEmit --pretty",
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "15.2.0",
@@ -30,6 +32,8 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-testing-library": "^7.1.1",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "prettier": "3.5.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.0.9",
