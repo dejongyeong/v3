@@ -15,7 +15,7 @@
     "prepare": "husky",
     "commit": "cz",
     "test": "vitest run --passWithNoTests",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test --pass-with-no-tests"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^15.2.0",
