@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/dejongyeong/v3/compare/v1.1.0...v1.2.0) (2025-03-02)
+
+
+### Features
+
+* add playwright integration and e2e testing ([20aa7ee](https://github.com/dejongyeong/v3/commit/20aa7eef20ef0150aed6cb80f44d245398ab9330))
+
 # [1.1.0](https://github.com/dejongyeong/v3/compare/v1.0.0...v1.1.0) (2025-03-01)
 
 
