@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+[![codecov](https://codecov.io/gh/dejongyeong/v3/branch/main/graph/badge.svg?token=ulTrW6iqLL)](https://codecov.io/gh/dejongyeong/v3)
+
 ## Getting Started
 
 First, run the development server:
