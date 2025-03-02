@@ -45,6 +45,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^3.0.7",
     "@vitest/expect": "^3.0.7",
     "commitizen": "^4.3.1",
     "cross-env": "^7.0.3",
