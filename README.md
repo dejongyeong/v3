@@ -46,4 +46,8 @@ npx playwright install # only for the first time in a new development
 npm run test:e2e
 ```
 
+Visual testing only runs in GitHub Actions. In GitHub Actions, define the <code>PERCY_TOKEN</code> environment variable and paste the token.
+
+Guide to integrate Playwright tests with Percy: [Docs](https://www.browserstack.com/docs/percy/integrate/playwright)
+
 Acknowledge: [Next-js-Boilerplate](https://github.com/ixartz/Next-js-Boilerplate/tree/main) from Ixartz.

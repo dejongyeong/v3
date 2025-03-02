@@ -80,6 +80,11 @@ jobs:
       - name: 📥 Install playwright for e2e tests
         run: npx playwright install --with-deps
 
+      - name: 🧪 E2E tests
+        run: npx percy exec -- npm run test:e2e
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+
       - name: 📤 Upload artifact
         uses: actions/upload-artifact@v4
         if: always()
