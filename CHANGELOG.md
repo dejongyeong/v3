@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/dejongyeong/v3/compare/v1.2.0...v1.3.0) (2025-03-02)
+
+
+### Features
+
+* integrate playwright tests with percy ([5e3cdcb](https://github.com/dejongyeong/v3/commit/5e3cdcb287f6caf8cfc2469baf81842e1039adcb))
+
 # [1.2.0](https://github.com/dejongyeong/v3/compare/v1.1.0...v1.2.0) (2025-03-02)
 
 
