@@ -9,6 +9,7 @@
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.dropIntoEditor.preferences": [],
   "editor.cursorBlinking": "expand",
+  "terminal.integrated.fontSize": 12,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   }

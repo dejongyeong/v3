@@ -1,7 +1,7 @@
 {
   "name": "v3",
   "version": "1.1.0",
-  "private": true,
+  "private": false,
   "author": "DJ (https://github.com/dejongyeong)",
   "license": "MIT",
   "scripts": {
