@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/dejongyeong/v3/compare/v1.3.0...v1.3.1) (2025-03-02)
+
+
+### Bug Fixes
+
+* add production build command for e2e testing during ci ([f41ae29](https://github.com/dejongyeong/v3/commit/f41ae2918e8dde1826e08ad5678d554b161911ef))
+
 # [1.3.0](https://github.com/dejongyeong/v3/compare/v1.2.0...v1.3.0) (2025-03-02)
 
 
