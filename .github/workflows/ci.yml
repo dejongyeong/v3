@@ -1,0 +1,80 @@
+# ref: https://medium.com/@jan.hesters/how-to-set-up-next-js-15-for-production-in-2024-347f542922b4
+
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        node-version: [23.x] # see supported node.js release schedule at https://nodejs.org/en/about/releases/
+
+    name: Build with ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      - name: 📦 Build
+        run: npm run build
+
+  test:
+    strategy:
+      matrix:
+        node-version: [23.x] # see supported node.js release schedule at https://nodejs.org/en/about/releases/
+
+    name: Run tests with ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      - if: github.event_name == 'pull_request'
+        name: ✔️ Validate commits from PR
+        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
+
+      - name: 🔬 Lint
+        run: npm run lint
+
+      - name: 🔎 Type check
+        run: npm run check-types --if-present
+
+      - name: 🧪 Unit test
+        run: npm run test -- --coverage
+
+      - name: 📤 Upload artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: test-results/
+          retention-days: 7

@@ -1,7 +1,10 @@
 name: release
 
 on:
-  push:
+  workflow_run:
+    workflows: ["ci"]
+    types:
+      - completed
     branches:
       - main
 
@@ -11,7 +14,7 @@ jobs:
       matrix:
         node-version: [23.x]
 
-    name: new release
+    name: New release
     runs-on: ubuntu-latest
 
     permissions:
@@ -20,18 +23,22 @@ jobs:
       pull-requests: write # to be able to comment on released pull requests
 
     steps:
-      - uses: actions/checkout@v4
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Use node.js ${{ matrix.node-version }}
+
+      - name: ⚙️ Use node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
-      - name: Install dependencies
+
+      - name: 📥 Install dependencies
         run: HUSKY=0 npm ci
-      - name: Release
+
+      - name: 🚀 Release
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
