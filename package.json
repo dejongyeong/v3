@@ -8,6 +8,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "build:analyze": "cross-env ANALYZE=true npm run build",
+    "clean": "rimraf .next out coverage",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
