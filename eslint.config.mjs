@@ -1,6 +1,7 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import jestDom from "eslint-plugin-jest-dom";
 import jsxA11y from "eslint-plugin-jsx-a11y";
+import playwright from "eslint-plugin-playwright";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
@@ -39,9 +40,16 @@ const eslintConfig = [
     reactHooks.configs["recommended-latest"],
     reactRefresh.configs.recommended,
     {
-      files: ["*.test.ts", "*.test.tsx"],
+      files: ["**/*.test.ts?(x)"],
       ...testingLibrary.configs["flat/react"],
       ...jestDom.configs["flat/recommended"],
+    },
+    {
+      files: ["**/*.spec.ts", "**/*.e2e.ts"],
+      ...playwright.configs["flat/recommended"],
+      rules: {
+        ...playwright.configs["flat/recommended"].rules,
+      },
     },
   ),
   {

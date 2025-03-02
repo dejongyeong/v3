@@ -19,8 +19,10 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./src/*"],
+      "@/public/*": ["./public/*"]
+    },
+    "types": ["vitest/globals"]
   },
   "include": [
     "next-env.d.ts",
@@ -29,5 +31,10 @@
     ".next/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "./node_modules/**/*",
+    "./out/**/*",
+    "**/*.spec.ts",
+    "**/*.e2e.ts"
+  ]
 }
