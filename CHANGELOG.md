@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/dejongyeong/v3/compare/v1.3.1...v1.4.0) (2025-03-03)
+
+
+### Features
+
+* add logging and log management with pino.js and betterstack ([9fcc0c8](https://github.com/dejongyeong/v3/commit/9fcc0c8c3004eeac43b15cb7ab50fbfe738748d6))
+
 ## [1.3.1](https://github.com/dejongyeong/v3/compare/v1.3.0...v1.3.1) (2025-03-02)
 
 
