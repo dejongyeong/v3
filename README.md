@@ -48,6 +48,22 @@ npm run test:e2e
 
 Visual testing only runs in GitHub Actions. In GitHub Actions, define the <code>PERCY_TOKEN</code> environment variable and paste the token.
 
-Guide to integrate Playwright tests with Percy: [Docs](https://www.browserstack.com/docs/percy/integrate/playwright)
+Guide to integrate Playwright tests with Percy can be found [here](https://www.browserstack.com/docs/percy/integrate/playwright).
+
+## Monitoring as Code using Checkly
+
+The project can use [Checkly](https://www.checklyhq.com/) to ensure production environment is always up and running. At regular intervals, Checkly runs the tests ending with <code>\*.check.e2e.ts</code> extension and notifies author if any of the tests fail. Additionally, authors have the flexibility to run checks on APIs or execute tests from multiple locations to ensure that application is available worldwide.
+
+## Web Analytics using PostHog
+
+The project can use [PostHog](https://posthog.com/docs/web-analytics) to track and monitor the application. For example, PostHog can be adopted to track users without cookies for compliance and privacy or calculate average session duration and time on site. It is especially useful for marketers, content creators, or anyone used to tools like Google Analytics. It includes a dashboard that offers essential metrics, such as visitors, views, sessions, session duration, bounce rate, conversions, paths, referrers, and more.
+
+Guide to install PostHog Web Analytics on Next.js project can be found [here](https://posthog.com/docs/web-analytics/installation?tab=Next.js).
+
+## Error Monitoring
+
+The project can use [Sentry](https://sentry.io/welcome/?utm_source=github&utm_medium=paid-community&utm_campaign=general-fy25q1-nextjs&utm_content=github-banner-nextjsboilerplate-logo) to monitor errors. In the development environment, the authors can use Spotlight (Sentry for Development). All errors will automatically be sent to the local Spotlight instance, allowing developers to experience Sentry locally. By default, development environment is used.
+
+For production environment, a Sentry account is needed. Guide to setup Sentry in Next.js project can be found [here](https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup)
 
 Acknowledge: [Next-js-Boilerplate](https://github.com/ixartz/Next-js-Boilerplate/tree/main) from Ixartz.
