@@ -29,7 +29,7 @@ export default arcjet({
     // rate limit requests
     tokenBucket({
       mode: "LIVE",
-      capacity: 10, // bucket maximum capacity
+      capacity: 1000, // bucket maximum capacity
       refillRate: 5, // refill 5 tokens per interval
       interval: 10, // 10 seconds interval
     }),

@@ -16,7 +16,7 @@ export const config = {
 
 // chaining middleware: https://docs.arcjet.com/integrations/authjs/#chaining-middleware
 export async function middleware(request: NextRequest) {
-  const decision = await arject.protect(request, { requested: 5 });
+  const decision = await arject.protect(request, { requested: 1 });
 
   if (decision.isDenied()) {
     const status = decision.reason.isRateLimit() ? 429 : 403;
