@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/dejongyeong/v3/compare/v1.4.0...v1.5.0) (2025-03-04)
+
+
+### Features
+
+* add arcjet security to protect from bots and rate limiting ([2e8c33f](https://github.com/dejongyeong/v3/commit/2e8c33fa86356a5b8bd53715cf9e0a0a378db525))
+
 # [1.4.0](https://github.com/dejongyeong/v3/compare/v1.3.1...v1.4.0) (2025-03-03)
 
 
