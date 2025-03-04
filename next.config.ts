@@ -19,6 +19,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   experimental: {
     optimizePackageImports: [],
+    turbo: {
+      rules: { ".svg": ["@svgr/webpack"] },
+    },
   },
 };
 

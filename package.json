@@ -19,6 +19,7 @@
     "test:e2e": "playwright test --pass-with-no-tests"
   },
   "dependencies": {
+    "@arcjet/next": "^1.0.0-beta.2",
     "@logtail/pino": "^0.5.2",
     "@next/bundle-analyzer": "^15.2.0",
     "@t3-oss/env-nextjs": "^0.12.0",
