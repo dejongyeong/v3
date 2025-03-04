@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/dejongyeong/v3/compare/v1.5.0...v1.5.1) (2025-03-04)
+
+
+### Bug Fixes
+
+* fix arcjet rate limiting issue and add optional to node env ([567222b](https://github.com/dejongyeong/v3/commit/567222b3df6d5df93354e63ef9c1ec7f71afdfb2))
+
 # [1.5.0](https://github.com/dejongyeong/v3/compare/v1.4.0...v1.5.0) (2025-03-04)
 
 
