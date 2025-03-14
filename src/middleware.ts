@@ -1,6 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
-
-import arject from "./libs/arcjet";
+import { arcjetMiddleware } from "./middlewares/arcjet.middleware";
+import { chain } from "./middlewares/chain";
 
 // avoid double protection with middleware (https://docs.arcjet.com/rate-limiting/reference)
 export const config = {
@@ -15,20 +14,5 @@ export const config = {
 };
 
 // chaining middleware: https://docs.arcjet.com/integrations/authjs/#chaining-middleware
-export async function middleware(request: NextRequest) {
-  const decision = await arject.protect(request, { requested: 1 });
-
-  if (decision.isDenied()) {
-    const status = decision.reason.isRateLimit() ? 429 : 403;
-    const err = decision.reason.isRateLimit()
-      ? "Too many requests"
-      : "Forbidden";
-
-    return NextResponse.json(
-      { error: err, reason: decision.reason },
-      { status },
-    );
-  }
-
-  return NextResponse.next();
-}
+// reference: https://github.com/Farx1/autocorrectP/blob/main/middleware.ts
+export default chain([arcjetMiddleware]);
