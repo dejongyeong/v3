@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev:next": "next dev --turbopack",
+    "dev:spotlight": "spotlight-sidecar",
     "dev": "run-p dev:*",
     "build": "next build",
     "build:analyze": "cross-env ANALYZE=true npm run build",
@@ -23,6 +24,8 @@
     "@arcjet/next": "^1.0.0-beta.2",
     "@logtail/pino": "^0.5.2",
     "@next/bundle-analyzer": "^15.2.0",
+    "@sentry/nextjs": "^9.5.0",
+    "@spotlightjs/spotlight": "^2.12.0",
     "@t3-oss/env-nextjs": "^0.12.0",
     "next": "15.2.0",
     "pino": "^9.6.0",

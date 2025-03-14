@@ -23,9 +23,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // the `suppressHydrationWarning` attribute in <body> is used to prevent hydration errors caused by sentry overlay,
+  // which dynamically adds a `style` attribute to the body tag.
   return (
     <html lang="en">
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
