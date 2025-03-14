@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/dejongyeong/v3/compare/v1.5.1...v1.6.0) (2025-03-14)
+
+
+### Features
+
+* add sentry and spotlight to monitor errors ([5f5b495](https://github.com/dejongyeong/v3/commit/5f5b495e06b47d4802571113655430ea5aa25cc3))
+
 ## [1.5.1](https://github.com/dejongyeong/v3/compare/v1.5.0...v1.5.1) (2025-03-04)
 
 
