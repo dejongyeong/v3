@@ -62,7 +62,7 @@ Guide to install PostHog Web Analytics on Next.js project can be found [here](ht
 
 ## Error Monitoring
 
-The project can use [Sentry](https://sentry.io/welcome/?utm_source=github&utm_medium=paid-community&utm_campaign=general-fy25q1-nextjs&utm_content=github-banner-nextjsboilerplate-logo) to monitor errors. In the development environment, the authors can use Spotlight (Sentry for Development). All errors will automatically be sent to the local Spotlight instance, allowing developers to experience Sentry locally. By default, development environment is used.
+The project can use [Sentry](https://sentry.io/welcome/?utm_source=github&utm_medium=paid-community&utm_campaign=general-fy25q1-nextjs&utm_content=github-banner-nextjsboilerplate-logo) to monitor errors. In the development environment, the authors can use Spotlight (Sentry for Development). All errors will automatically be sent to the local Spotlight instance, allowing developers to experience Sentry locally. By default, development environment is used. In GitHub Actions, define the <code>SENTRY_AUTH_TOKEN</code> environment variable and paste the token
 
 For production environment, a Sentry account is needed. Guide to setup Sentry in Next.js project can be found [here](https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup)
 
