@@ -6,7 +6,7 @@ import {
   NextResponse,
 } from "next/server";
 
-import arcjet from "@/libs/arcjet";
+import arcjet from "@/lib/arcjet";
 
 export function arcjetMiddleware(middleware: NextMiddleware) {
   return async (request: NextRequest, event: NextFetchEvent) => {
