@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/dejongyeong/v3/compare/v1.8.0...v1.9.0) (2025-03-15)
+
+
+### Features
+
+* add sitemap and robot for search engine ([2711bbb](https://github.com/dejongyeong/v3/commit/2711bbb701aeafe5ffc4eacf95c2dcd5c0c754a7))
+
 # [1.8.0](https://github.com/dejongyeong/v3/compare/v1.7.0...v1.8.0) (2025-03-15)
 
 
