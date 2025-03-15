@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/dejongyeong/v3/compare/v1.6.0...v1.7.0) (2025-03-15)
+
+
+### Features
+
+* add tailwindcss postcss plugins ([f4dec6f](https://github.com/dejongyeong/v3/commit/f4dec6fcdb7a1cf186e5aae8f534fe082fc97383))
+
 # [1.6.0](https://github.com/dejongyeong/v3/compare/v1.5.1...v1.6.0) (2025-03-14)
 
 
