@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/dejongyeong/v3/compare/v1.7.0...v1.8.0) (2025-03-15)
+
+
+### Features
+
+* initialize shadcn/ui into project ([0dbd342](https://github.com/dejongyeong/v3/commit/0dbd34283121463c10a847dc11bb15e1def9305e))
+
 # [1.7.0](https://github.com/dejongyeong/v3/compare/v1.6.0...v1.7.0) (2025-03-15)
 
 
