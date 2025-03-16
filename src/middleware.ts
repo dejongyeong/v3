@@ -1,4 +1,4 @@
-import { arcjetMiddleware } from "./middlewares/arcjet.middleware";
+import aj, { createMiddleware } from "./lib/arcjet";
 import { chain } from "./middlewares/chain";
 
 // avoid double protection with middleware (https://docs.arcjet.com/rate-limiting/reference)
@@ -15,4 +15,7 @@ export const config = {
 
 // chaining middleware: https://docs.arcjet.com/integrations/authjs/#chaining-middleware
 // reference: https://github.com/Farx1/autocorrectP/blob/main/middleware.ts
-export default chain([arcjetMiddleware]);
+// reference: https://github.com/IvanSmiths/ivan-new-portfolio/blob/main/middleware.ts
+// reference: https://github.com/ahmadk953/tasko/blob/main/middleware.ts
+// reference: https://github.com/aayushmaan-54/Logify/blob/main/src/middleware.ts
+export default createMiddleware(aj, chain([]));

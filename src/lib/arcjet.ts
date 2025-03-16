@@ -1,11 +1,15 @@
-import arcjet, { detectBot, shield, tokenBucket } from "@arcjet/next";
+import arcjet, {
+  ArcjetNext,
+  detectBot,
+  shield,
+  slidingWindow,
+} from "@arcjet/next";
 
 import { env } from "@/env";
 
-// create base arcjet instance
-// ArcjetNext<Record<string, unknown>>
-export default arcjet({
-  // get site key from project, store in env variable
+export { createMiddleware } from "@arcjet/next";
+
+const aj: ArcjetNext<Record<string, unknown>> = arcjet({
   key: env.ARCJET_KEY!,
 
   // track requests by user ip address
@@ -27,11 +31,12 @@ export default arcjet({
       ],
     }),
     // rate limit requests
-    tokenBucket({
+    slidingWindow({
       mode: "LIVE",
-      capacity: 1000, // bucket maximum capacity
-      refillRate: 5, // refill 5 tokens per interval
-      interval: 10, // 10 seconds interval
+      interval: 60, // 60 second sliding window
+      max: 100,
     }),
   ],
 });
+
+export default aj;
