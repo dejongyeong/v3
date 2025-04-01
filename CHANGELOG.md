@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/dejongyeong/v3/compare/v1.9.0...v1.9.1) (2025-04-01)
+
+
+### Bug Fixes
+
+* fix github workflow syntax error ([2bf1861](https://github.com/dejongyeong/v3/commit/2bf18619c0e33e7aff9621c5976e3473c95933f3))
+
 # [1.9.0](https://github.com/dejongyeong/v3/compare/v1.8.0...v1.9.0) (2025-03-15)
 
 
