@@ -9,9 +9,13 @@ on:
   pull_request:
     branches:
       - main
+  pull_request_target:
+    branches:
+      - main
 
 jobs:
   build:
+    if: !github.event.repository.fork && (github.actor == 'dependabot[bot]' || github.actor == github.repository_owner)
     strategy:
       matrix:
         node-version: [23.x] # see supported node.js release schedule at https://nodejs.org/en/about/releases/
@@ -36,6 +40,8 @@ jobs:
         run: npm run build
 
   test:
+    needs: build
+    if: !github.event.repository.fork && (github.actor == 'dependabot[bot]' || github.actor == github.repository_owner)
     strategy:
       matrix:
         node-version: [23.x] # see supported node.js release schedule at https://nodejs.org/en/about/releases/
