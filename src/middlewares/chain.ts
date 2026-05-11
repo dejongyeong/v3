@@ -1,11 +1,11 @@
-import { NextMiddleware, NextResponse } from "next/server";
+import { NextProxy, NextResponse } from "next/server";
 
-type MiddlewareFactory = (middleware: NextMiddleware) => NextMiddleware;
+type MiddlewareFactory = (middleware: NextProxy) => NextProxy;
 
 export function chain(
   functions: MiddlewareFactory[] = [],
   index: number = 0,
-): NextMiddleware {
+): NextProxy {
   const current = functions[index];
 
   if (current) {
