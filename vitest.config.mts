@@ -15,7 +15,7 @@ export default defineConfig({
       reporter: ["text", "html", "json"],
       ignoreEmptyLines: true,
     },
-    workspace: [
+    projects: [
       {
         extends: true,
         test: {
