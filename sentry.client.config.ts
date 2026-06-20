@@ -3,7 +3,6 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs
 
 import * as Sentry from "@sentry/nextjs";
-import * as Spotlight from "@spotlightjs/spotlight";
 
 import { env } from "@/env";
 
@@ -34,9 +33,11 @@ Sentry.init({
 
   // settings this option to true will print useful information to the console while setting up sentry
   debug: false,
+
+  spotlight: process.env.NODE_ENV === "development",
 });
 
-if (process.env.NODE_ENV === "development") {
-  // enable spotlight for development
-  Spotlight.init();
-}
+// if (process.env.NODE_ENV === "development") {
+//   // enable spotlight for development
+//   Spotlight.init();
+// }

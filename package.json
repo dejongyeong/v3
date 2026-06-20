@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev:next": "next dev --turbopack",
-    "dev:spotlight": "spotlight-sidecar",
+    "dev:spotlight": "spotlight",
     "dev": "run-p dev:*",
     "build": "next build",
     "build:analyze": "cross-env ANALYZE=true npm run build",
@@ -24,8 +24,8 @@
     "@arcjet/next": "^1.0.0-beta.2",
     "@logtail/pino": "^0.5.2",
     "@next/bundle-analyzer": "16.2.6",
-    "@sentry/nextjs": "^10.52.0",
-    "@spotlightjs/spotlight": "^2.12.0",
+    "@sentry/nextjs": "^10.53.1",
+    "@spotlightjs/spotlight": "^4.11.4",
     "@t3-oss/env-nextjs": "^0.12.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -89,9 +89,9 @@
     "tailwindcss": "^4.0.14",
     "typescript": "^5",
     "typescript-eslint": "^8.59.2",
-    "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.0.7",
-    "vitest-fail-on-console": "^0.7.1"
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.1.9",
+    "vitest-fail-on-console": "^0.10.1"
   },
   "config": {
     "commitizen": {

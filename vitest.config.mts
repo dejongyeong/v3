@@ -13,7 +13,6 @@ export default defineConfig({
       include: ["src/**/*"],
       exclude: ["src/**/*.test.{js,jsx,ts,tsx}", "**/*.d.ts"],
       reporter: ["text", "html", "json"],
-      ignoreEmptyLines: true,
     },
     projects: [
       {
