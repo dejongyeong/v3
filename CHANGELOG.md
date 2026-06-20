@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/dejongyeong/v3/compare/v1.9.1...v1.9.2) (2026-06-20)
+
+
+### Bug Fixes
+
+* package version conflict ([8fbadd6](https://github.com/dejongyeong/v3/commit/8fbadd6d31f3017c9e868334c19b0d3e3aae04c5))
+
 ## [1.9.1](https://github.com/dejongyeong/v3/compare/v1.9.0...v1.9.1) (2025-04-01)
 
 
