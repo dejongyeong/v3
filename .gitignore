@@ -14,6 +14,10 @@ out/
 build
 .swc/
 
+# nestjs
+dist/
+*.tsbuildinfo
+
 # misc
 .DS_Store
 *.pem
