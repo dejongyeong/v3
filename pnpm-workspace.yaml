@@ -6,3 +6,10 @@ allowBuilds:
   "@parcel/watcher": true
   lefthook: true
   "pnpm": true
+
+# wait for TypeScript v7.1 to be compatible with Nestjs CLI
+peerDependencyRules:
+  allowAny:
+    - "typescript"
+  ignoreMissing:
+    - "typescript"

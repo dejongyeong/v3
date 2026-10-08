@@ -6,7 +6,9 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "experimentalDecorators": false,
+    "emitDecoratorMetadata": false
   },
   "include": [
     "**/*.ts",
