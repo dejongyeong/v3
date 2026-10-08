@@ -1,0 +1,15 @@
+{
+  "useEmoji": true,
+  "emojiAlign": "center",
+  "themeColorCode": "38;5;39",
+  "scopes": [
+    "root",
+    "repo",
+    "web",
+    "api",
+    "tsconfig",
+    "tailwind-config",
+    "infra",
+    "ci"
+  ]
+}

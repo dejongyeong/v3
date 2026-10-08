@@ -1,0 +1,9 @@
+# update lefthook configuration for pre-commit and prepare-commit-msg hooks
+# run `pnpm lefthook install`
+grid: true
+
+pre-commit:
+  commands:
+    biome-check:
+      glob: "*.{js,ts,jsx,tsx,json}"
+      run: pnpm biome check --write --no-errors-on-unmatched {staged_files} && git add {staged_files}

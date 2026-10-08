@@ -1,0 +1,66 @@
+{
+  "$schema": "https://biomejs.dev",
+  "assist": {
+    "enabled": true,
+    "actions": { "source": { "organizeImports": "on" } }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "correctness": {
+        "noUndeclaredVariables": "error"
+      },
+      "suspicious": { "noVar": "error" },
+      "style": {
+        "useImportType": "error",
+        "useConst": "error"
+      },
+      "performance": {
+        "noDelete": "error"
+      }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 80,
+    "lineEnding": "lf"
+  },
+  "javascript": {
+    "formatter": {
+      "arrowParentheses": "asNeeded"
+    }
+  },
+  "css": { "parser": { "tailwindDirectives": true } },
+  "overrides": [
+    {
+      "includes": ["**/__tests__/**/*", "**/*test.ts", "**/*.spec.ts"],
+      "linter": {
+        "rules": {
+          "correctness": { "noUnusedVariables": "warn" },
+          "suspicious": { "noFocusedTests": "error" }
+        }
+      }
+    }
+  ],
+  "files": {
+    "includes": [
+      "**",
+      "!**/.next",
+      "!**/out",
+      "!**/build",
+      "!**/public",
+      "!**/node_modules",
+      "!**/dist",
+      "!**/coverage",
+      "!**/.turbo",
+      "!**/Dockerfile",
+      "!**/.dockerignore",
+      "!!**/.terraform",
+      "!!**/*.tfstate*"
+    ]
+  }
+}

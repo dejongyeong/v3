@@ -1,0 +1,23 @@
+{
+  "name": "with-tailwind",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "biome check .",
+    "lint:fix": "biome check -write --no-errors-on-unmatched",
+    "check-types": "turbo run check-types",
+    "commit": "czg"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
+    "czg": "^1.14.0",
+    "lefthook": "^2.1.17",
+    "pnpm": "12.10.1",
+    "turbo": "^2.11.7"
+  },
+  "packageManager": "pnpm@12.6.0",
+  "engines": {
+    "node": ">=24"
+  }
+}
