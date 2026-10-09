@@ -13,10 +13,6 @@
     "./env/web": {
       "types": "./dist/env/web.d.ts",
       "import": "./dist/env/web.js"
-    },
-    "./portfolio": {
-      "types": "./dist/portfolio.d.ts",
-      "import": "./dist/portfolio.js"
     }
   },
   "scripts": {
