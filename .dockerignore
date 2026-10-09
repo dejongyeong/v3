@@ -1,0 +1,29 @@
+# Git history and metadata are not needed to build or run the API image.
+.git
+
+# Local Turbo task cache; the Docker build should use its own build steps.
+.turbo
+
+# Generated Turborepo prune output; it is created inside the Docker build.
+out
+
+# Installed dependencies are restored in the image from the lockfile.
+**/node_modules
+
+# Next.js build output is unrelated to the NestJS API image.
+**/.next
+
+# Compiled output is regenerated during the API image build.
+**/dist
+
+# Local test coverage reports are not runtime or build inputs.
+**/coverage
+
+# Local environment files may contain secrets and must never enter the build context.
+**/.env*
+
+# Keep example environment templates available for documentation if needed.
+!**/.env.example
+
+# PEM files may contain private keys; provide runtime configuration instead.
+**/*.pem
