@@ -1,0 +1,10 @@
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "env": ["NODE_ENV", "NEST_API_BASE_URL"],
+      "passThroughEnv": ["NEST_API_SIGNING_PRIVATE_KEY"]
+    }
+  }
+}
