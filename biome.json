@@ -32,7 +32,8 @@
   "javascript": {
     "formatter": {
       "arrowParentheses": "asNeeded"
-    }
+    },
+    "parser": { "unsafeParameterDecoratorsEnabled": true }
   },
   "css": { "parser": { "tailwindDirectives": true } },
   "overrides": [

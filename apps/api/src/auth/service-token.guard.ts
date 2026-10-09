@@ -1,12 +1,13 @@
 import {
   type CanActivate,
   type ExecutionContext,
+  Inject,
   Injectable,
   type OnModuleInit,
   UnauthorizedException,
 } from "@nestjs/common";
-import type { ConfigService } from "@nestjs/config";
-import type { Reflector } from "@nestjs/core";
+import { ConfigService } from "@nestjs/config";
+import { Reflector } from "@nestjs/core";
 import type { Request } from "express";
 import type { JWTPayload } from "jose";
 import { importSPKI, jwtVerify } from "jose";
@@ -27,8 +28,8 @@ export class ServiceTokenGuard implements CanActivate, OnModuleInit {
   private readonly publicKeyPromise: ReturnType<typeof importSPKI>;
 
   constructor(
-    private readonly config: ConfigService,
-    private readonly reflector: Reflector,
+    @Inject(ConfigService) private readonly config: ConfigService,
+    @Inject(Reflector) private readonly reflector: Reflector,
   ) {
     const pem = this.config
       .getOrThrow<string>("NEST_API_SIGNING_PUBLIC_KEY")
