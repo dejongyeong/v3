@@ -8,9 +8,11 @@ import {
 import type { ConfigService } from "@nestjs/config";
 import type { Reflector } from "@nestjs/core";
 import type { Request } from "express";
-import { importSPKI, type JWTPayload, jwtVerify } from "jose";
+import type { JWTPayload } from "jose";
+import { importSPKI, jwtVerify } from "jose";
 import { IS_PUBLIC_ROUTE } from "./public.decorator.js";
 
+const TOKEN_ALGORITHM = "EdDSA";
 const TOKEN_ISSUER = "portfolio-web";
 const TOKEN_AUDIENCE = "portfolio-api";
 const REQUIRED_SCOPE = "portfolio:read";
@@ -35,7 +37,7 @@ export class ServiceTokenGuard implements CanActivate, OnModuleInit {
     // Ed25519 key pair - identifies the web service, not the visitor
     // it does not authenticate the admin, it needs separate user authentication
     // for each write operation
-    this.publicKeyPromise = importSPKI(pem, "EdDSA");
+    this.publicKeyPromise = importSPKI(pem, TOKEN_ALGORITHM);
   }
 
   async onModuleInit(): Promise<void> {
@@ -60,11 +62,11 @@ export class ServiceTokenGuard implements CanActivate, OnModuleInit {
     let payload: JWTPayload;
     try {
       ({ payload } = await jwtVerify(token, await this.publicKeyPromise, {
-        algorithms: ["EdDSA"],
+        algorithms: [TOKEN_ALGORITHM],
         issuer: TOKEN_ISSUER,
         audience: TOKEN_AUDIENCE,
         typ: "JWT",
-        requiredClaims: ["exp", "iat", "iss", "aud"],
+        requiredClaims: ["exp"],
         maxTokenAge: MAX_TOKEN_AGE,
       }));
     } catch {
