@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
+    "@repo/validators": "workspace:*",
     "geist": "1.7.2",
     "next": "16.4.0",
     "react": "19.3.0",

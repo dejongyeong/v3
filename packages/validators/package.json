@@ -1,0 +1,33 @@
+{
+  "name": "@repo/validators",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./env/api": {
+      "types": "./dist/env/api.d.ts",
+      "import": "./dist/env/api.js"
+    },
+    "./env/web": {
+      "types": "./dist/env/web.d.ts",
+      "import": "./dist/env/web.js"
+    },
+    "./portfolio": {
+      "types": "./dist/portfolio.d.ts",
+      "import": "./dist/portfolio.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check-types": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "7.0.2"
+  }
+}
