@@ -2,6 +2,7 @@ import { Card } from "@repo/ui/card";
 import { Gradient } from "@repo/ui/gradient";
 import { TurborepoLogo } from "@repo/ui/turborepo-logo";
 import Image from "next/image";
+import { getStarterGreeting } from "../lib/starter-api";
 
 const LINKS = [
   {
@@ -27,7 +28,9 @@ const LINKS = [
   },
 ];
 
-export default function Page() {
+export default async function Page() {
+  const starterGreeting = await getStarterGreeting();
+
   return (
     <main className="flex flex-col items-center justify-between min-h-screen p-24">
       <div className="z-10 items-center justify-between w-full max-w-5xl font-mono text-sm lg:flex">
@@ -107,7 +110,7 @@ export default function Page() {
       <div className="grid mb-32 text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         {LINKS.map(({ title, href, description }) => (
           <Card href={href} key={title} title={title}>
-            {description}
+            {description} {starterGreeting}
           </Card>
         ))}
       </div>
