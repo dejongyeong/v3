@@ -2,6 +2,8 @@ import { Card } from "@repo/ui/card";
 import { Gradient } from "@repo/ui/gradient";
 import { TurborepoLogo } from "@repo/ui/turborepo-logo";
 import Image from "next/image";
+import { connection } from "next/server";
+
 import { getStarterGreeting } from "../lib/starter-api";
 
 const LINKS = [
@@ -29,6 +31,7 @@ const LINKS = [
 ];
 
 export default async function Page() {
+  await connection(); // defer rendering until an incoming request
   const starterGreeting = await getStarterGreeting();
 
   return (

@@ -7,6 +7,12 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**", "!.next/dev/**"]
     },
+    "web#build": {
+      "dependsOn": ["^build"],
+      "env": ["NEST_API_BASE_URL", "NODE_ENV"],
+      "passThroughEnv": ["NEST_API_SIGNING_PRIVATE_KEY"],
+      "outputs": [".next/**", "!.next/cache/**", "!.next/dev/**"]
+    },
     "lint": {
       "cache": true
     },
