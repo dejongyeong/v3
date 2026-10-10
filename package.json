@@ -5,7 +5,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "biome check .",
-    "lint:fix": "biome check -write --no-errors-on-unmatched",
+    "lint:fix": "biome check --write --no-errors-on-unmatched",
     "check-types": "turbo run check-types",
     "commit": "czg"
   },
