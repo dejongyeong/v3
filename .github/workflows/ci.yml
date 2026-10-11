@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   verify:
-    name: Pipeline
+    name: pipeline
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -50,7 +50,7 @@ jobs:
         run: pnpm --filter api test:e2e
 
   integration:
-    name: Webhook
+    name: webhook
     needs: [verify]
     runs-on: ubuntu-latest
     timeout-minutes: 25
@@ -81,40 +81,57 @@ jobs:
       # RUNNER_TEMP is a temporary directory provided by GitHub Actions for storing temporary files.
       - name: ✨ Generate temporary signing keys
         shell: bash
+        # exit immediately if a command exits with a non-zero status, if an undefined variable is used, or if any command in a pipeline fails
+        # mask each .pem line in case a process unexpectedly logs one
         run: |
+          set -euo pipefail
           private_key="${RUNNER_TEMP}/test-private-key.pem"
           public_key="${RUNNER_TEMP}/test-public-key.pem"
            
-          private_delimiter="PRIVATE_$(openssl rand -hex 16)" 
-          public_delimiter="PUBLIC_$(openssl rand -hex 16)"
-
           openssl genpkey -algorithm Ed25519 -out "$private_key"
           openssl pkey -in "$private_key" -pubout -out "$public_key"
 
-          {
-            printf 'NEST_API_SIGNING_PRIVATE_KEY<<%s\n' "$private_delimiter"
-            cat "$private_key"
-            printf '\n%s\n' "$private_delimiter"
-            
-            printf 'NEST_API_SIGNING_PUBLIC_KEY<<%s\n' "$public_delimiter"
-            cat "$public_key"
-            printf '\n%s\n' "$public_delimiter"
-            
-            printf 'NEST_API_BASE_URL=http://127.0.0.1:3001\n'
-          } >> "$GITHUB_ENV"
+          while IFS= read -r line; do
+            if [[ -n "$line" ]]; then
+              printf '::add-mask::%s\n' "$line"
+            fi
+          done < "$private_key"
+
+          while IFS= read -r line; do
+            if [[ -n "$line" ]]; then
+              printf '::add-mask::%s\n' "$line"
+            fi
+          done < "$public_key"
 
       - name: 🚀 Start local API
         shell: bash
         run: |
-          nohup env NODE_ENV=test PORT=3001 \
-            pnpm --filter api start:prod \
-            > "$RUNNER_TEMP/portfolio-api.log" 2>&1 &
+          set -euo pipefail
+          api_log="${RUNNER_TEMP}/portfolio-api.log"
+          api_pid="${RUNNER_TEMP}/portfolio-api.pid"
+          : > "$api_log"
 
-          echo $! > "$RUNNER_TEMP/portfolio-api.pid"
+          setsid bash -c '
+            export NODE_ENV=test 
+            export PORT=3001
+            export NEST_API_SIGNING_PUBLIC_KEY="$(cat "$RUNNER_TEMP/test-public-key.pem")"
+            exec pnpm --filter api start:prod
+          ' > "$api_log" 2>&1 &
+
+          echo "$!" > "$api_pid"
+
+          sleep 2
+          if ! kill -0 "$(cat "$api_pid")" 2>/dev/null; then
+            cat "$api_log"
+            echo "API process exited during startup" >&2
+            exit 1
+          fi
 
       - name: ⏳ Wait for the API guard to response
         shell: bash
+        # an unauthenticated 401 confirms the api route and guard are up
         run: |
+          set -euo pipefail
           for attempt in $(seq 1 60); do
             status="$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:3001/api/v1 || true)"
 
@@ -123,6 +140,7 @@ jobs:
             fi
             sleep 1
           done
+
           cat "${RUNNER_TEMP}/portfolio-api.log"
           echo "API did not become ready" >&2
           exit 1
@@ -130,14 +148,21 @@ jobs:
       - name: ✔️ Verify the page renders the signed API response
         shell: bash
         run: |
+          set -euo pipefail
           for attempt in $(seq 1 90); do
-            if curl --silent --fail http://127.0.0.1:3000/ | grep --quiet 'Hello World!'; then
+            if curl --silent --fail http://127.0.0.1:3000/ | grep --quiet --fixed-strings 'Hello World!'; then
               exit 0
             fi
             sleep 2
           done
-          cat "${RUNNER_TEMP}/portfolio-api.log"
-          cat "${RUNNER_TEMP}/portfolio-web.log"
+
+          for log_file in "${RUNNER_TEMP}/portfolio-api.log" "${RUNNER_TEMP}/portfolio-web.log"; do
+            if [ -f "$log_file" ]; then
+              tail --lines=100 "$log_file"
+            else
+              echo "Log file $log_file does not exist" >&2
+            fi
+          done
           echo "Page did not render the expected content" >&2
           exit 1
 
@@ -145,9 +170,15 @@ jobs:
         if: ${{ always() }}
         shell: bash
         run: |
+          set -euo pipefail
           for pid_file in "${RUNNER_TEMP}"/portfolio-api.pid \
                           "${RUNNER_TEMP}"/portfolio-web.pid; do
             if [ -f "$pid_file" ]; then
-              kill "$(cat "$pid_file")" 2>/dev/null || true
+              pid="$(cat "$pid_file")"
+              kill -- "-${pid}" 2>/dev/null || kill "$pid" 2>/dev/null || true
             fi
           done
+
+          rm -f \
+            "${RUNNER_TEMP}/test-private-key.pem" \
+            "${RUNNER_TEMP}/test-public-key.pem"

@@ -30,7 +30,7 @@ jobs:
       contents: read
 
   deploy:
-    name: 🏗️ Build and deploy
+    name: deploy
     needs: [ci]
     runs-on: ubuntu-latest
     timeout-minutes: 30
