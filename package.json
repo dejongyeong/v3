@@ -7,12 +7,14 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write --no-errors-on-unmatched",
     "check-types": "turbo run check-types",
-    "commit": "czg"
+    "commit": "czg",
+    "release": "semantic-release"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.15",
     "czg": "^1.14.0",
     "lefthook": "^2.1.17",
+    "semantic-release": "^25.0.9",
     "turbo": "^2.11.7"
   },
   "packageManager": "pnpm@12.10.1",
