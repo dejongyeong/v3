@@ -145,6 +145,34 @@ jobs:
           echo "API did not become ready" >&2
           exit 1
 
+      - name: 🌐 Start local Next.js
+        shell: bash
+        run: |
+          set -euo pipefail
+          web_log="${RUNNER_TEMP}/portfolio-web.log"
+          web_pid="${RUNNER_TEMP}/portfolio-web.pid"
+          : > "$web_log"
+
+          setsid bash -c '
+            export NODE_ENV=development
+            export NEST_API_BASE_URL="http://127.0.0.1:3001"
+            export NEST_API_SIGNING_PRIVATE_KEY="$(cat "$RUNNER_TEMP/test-private-key.pem")"
+            exec pnpm --filter web exec next dev --hostname 127.0.0.1 --port 3000
+          ' > "$web_log" 2>&1 &
+
+          echo "$!" > "$web_pid"
+
+          for attempt in $(seq 1 60); do
+            if curl --silent --output /dev/null http://127.0.0.1:3000/; then
+              exit 0
+            fi
+            sleep 1
+          done
+
+          tail --lines=100 "$web_log"
+          echo "Next.js did not become ready" >&2
+          exit 1
+
       - name: ✔️ Verify the page renders the signed API response
         shell: bash
         run: |
